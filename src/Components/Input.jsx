@@ -10,7 +10,8 @@ import {
   Text
 } from "@chakra-ui/react";
 import { RiUserFollowLine } from "react-icons/ri";
-import { BiCreditCard } from "react-icons/bi";
+import { BiCalendar, BiCreditCard, BiLock } from "react-icons/bi";
+import { GoCalendar } from "react-icons/go";
 import React from "react";
 import styled from "styled-components";
 
@@ -18,10 +19,16 @@ const Div = styled.div`
   display: flex;
 `;
 
-export function FormInput({ setCardNo }) {
+export function FormInput({ handleCardNo, handleCardName }) {
   const [value, setValue] = React.useState("");
+  const [name, setName] = React.useState("");
   const handleChange = (event) => {
     setValue(event.target.value);
+    handleCardNo(event.target.value);
+  };
+  const handleName = (event) => {
+    setName(event.target.value);
+    handleCardName(event.target.value);
   };
 
   return (
@@ -46,8 +53,9 @@ export function FormInput({ setCardNo }) {
         <Input
           variant="flushed"
           type="text"
+          value={name}
+          onChange={handleName}
           placeholder="enter cardholder name"
-          onChange={handleCardno}
           size="sm"
           width="300px"
           color="red"
@@ -86,7 +94,7 @@ export function FormInput({ setCardNo }) {
 
       <div
         style={{
-          width: "60%",
+          width: "70%",
           display: "flex",
           justifyContent: "space-between"
         }}
@@ -103,11 +111,7 @@ export function FormInput({ setCardNo }) {
                 paddingRight: "5px"
               }}
             >
-              <BiCreditCard
-                fontSize="large"
-                color="tomato"
-                borderBottom="2px"
-              />
+              <GoCalendar fontSize="large" color="tomato" borderBottom="2px" />
             </div>
             <NumberInput
               size="sm"
@@ -141,11 +145,7 @@ export function FormInput({ setCardNo }) {
                 paddingRight: "5px"
               }}
             >
-              <BiCreditCard
-                fontSize="large"
-                color="tomato"
-                borderBottom="2px"
-              />
+              <BiCalendar fontSize="large" color="tomato" borderBottom="2px" />
             </div>
             <NumberInput
               size="sm"
@@ -179,11 +179,7 @@ export function FormInput({ setCardNo }) {
                 paddingRight: "5px"
               }}
             >
-              <BiCreditCard
-                fontSize="large"
-                color="tomato"
-                borderBottom="2px"
-              />
+              <BiLock fontSize="large" color="tomato" borderBottom="2px" />
             </div>
             <NumberInput
               size="sm"

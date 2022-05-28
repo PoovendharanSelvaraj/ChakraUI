@@ -18,9 +18,13 @@ const Boxs = styled.div`
 `;
 
 export const CreditCard = () => {
-  const [cardNo, setCardNo] = useState(0);
+  const [cardNo, setCardNo] = useState("");
+  const [cardName, setCardName] = useState("");
   const handleCardNo = (no) => {
     setCardNo(no);
+  };
+  const handleCardName = (no) => {
+    setCardName(no);
   };
   return (
     <Container>
@@ -30,10 +34,16 @@ export const CreditCard = () => {
           borderRadius="md"
           bg="tomato"
           color="white"
-          px={200}
-          h={200}
+          width="400px"
+          height="200px"
         >
           <p>{cardNo}</p>
+          <div>
+            <div>
+              <h5>Cardholder Name</h5>
+              <p>{cardName}</p>
+            </div>
+          </div>
         </Box>
       </Boxs>
       <Boxs>
@@ -46,7 +56,10 @@ export const CreditCard = () => {
           Payment Details
         </Heading>
         <form action="">
-          <FormInput setCardNo={handleCardNo} />
+          <FormInput
+            handleCardNo={handleCardNo}
+            handleCardName={handleCardName}
+          />
           <Heading
             fontSize="large"
             size="lg"
